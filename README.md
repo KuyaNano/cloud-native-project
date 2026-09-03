@@ -1,6 +1,6 @@
 # Cloud Native Project
 
-My journey into cloud infrastructure.
+My journey into cloud engineering, DevOps, and cloud infrastructure.
 
 ## Goals
 
