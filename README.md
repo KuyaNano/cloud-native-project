@@ -10,3 +10,7 @@ My journey into cloud engineering.
 - Learn Terraform
 - Learn Kubernetes
 - Learn Cloud Security
+
+## Current Focus
+
+- Practicing Git branches
