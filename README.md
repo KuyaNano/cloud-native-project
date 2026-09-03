@@ -14,3 +14,4 @@ My journey into cloud engineering, DevOps, and cloud infrastructure.
 ## Current Focus
 
 - Practicing Git branches
+- Practice GitHub collaboration
