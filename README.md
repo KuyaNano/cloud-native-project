@@ -42,6 +42,8 @@ My journey into cloud engineering, DevOps, and cloud infrastructure.
 - Port publishing and `ports` vs `expose`
 - Nginx reverse proxy
 - `/api/` routing from Nginx to the backend
+- Backend health checks
+- Compose dependency and readiness with `service_healthy`
 
 ### Current Application
 
@@ -49,7 +51,7 @@ The project currently contains two Docker Compose services:
 
 ```text
                     Ubuntu VM
-                 49.157.47.37
+                 Host VM
                        |
                   TCP :8080
                        |
@@ -74,3 +76,21 @@ The project currently contains two Docker Compose services:
                      | Python HTTP Server|
                      |       :8000       |
                      +-------------------+
+
+```
+## Next Steps
+
+- Environment variables and configuration management
+- Docker volumes
+- PostgreSQL
+- Redis
+- More production-style Compose architecture
+- CloudSigma deployment
+- Terraform infrastructure as code
+- Kubernetes
+- Kubernetes security
+- High availability and scaling
+- CI/CD and GitOps
+- Observability
+- Security scanning and supply-chain security
+- Backups and disaster recovery
