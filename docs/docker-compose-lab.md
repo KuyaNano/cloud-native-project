@@ -1067,3 +1067,40 @@ location /api/ {
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
 }
+
+```
+
+## Backend Health Check and Readiness
+
+The backend service now has a Docker Compose health check.
+
+```yaml
+healthcheck:
+  test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:8000/"]
+  interval: 10s
+  timeout: 3s
+  retries: 3
+  start_period: 5s
+```
+
+The `web` service depends on the backend being healthy before it starts:
+
+```yaml
+depends_on:
+  backend:
+    condition: service_healthy
+```
+
+This is different from the original short-form `depends_on`, which only controlled startup order and did not guarantee that the backend was ready to accept requests.
+
+The health check uses `127.0.0.1` because the backend listens on IPv4 address `0.0.0.0`. An earlier health check using `localhost` resolved to IPv6 `::1` in the container and failed with `Connection refused`.
+
+The final application was validated with:
+
+```bash
+docker compose -f app/compose.yaml ps
+curl http://localhost:8080
+curl http://localhost:8080/api/
+```
+
+The backend reported `healthy`, the frontend returned the application HTML, and `/api/` returned the backend health response.
