@@ -1,0 +1,12 @@
+services:
+  web:
+    image: cloud-native-app:1.1
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+  backend:
+    image: cloud-native-backend:1.0
+    expose:
+      - "8000"
