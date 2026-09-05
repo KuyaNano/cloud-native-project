@@ -13,8 +13,9 @@ My journey into cloud engineering, DevOps, and cloud infrastructure.
 
 ## Current Focus
 
-- Practicing Git branches
-- Practice GitHub collaboration
+- Docker and container networking
+- Reverse proxy architecture
+- Preparing the application for cloud deployment
 
 ## Git Workflow
 
@@ -24,6 +25,7 @@ My journey into cloud engineering, DevOps, and cloud infrastructure.
 - Commit changes
 - Push the feature branch
 - Merge the feature into main
+- Delete the feature branch after merging
 
 ## Current Project Status
 
@@ -38,6 +40,8 @@ My journey into cloud engineering, DevOps, and cloud infrastructure.
 - Multi-container networking
 - Docker service discovery
 - Port publishing and `ports` vs `expose`
+- Nginx reverse proxy
+- `/api/` routing from Nginx to the backend
 
 ### Current Application
 
@@ -51,16 +55,22 @@ The project currently contains two Docker Compose services:
                        |
                        v
               +----------------+
-              |  Web Container |
-              |   nginx:alpine |
+              | Nginx Web      |
+              | nginx:alpine   |
               |      :80       |
-              +----------------+
-                       |
-                  Docker Network
-                       |
-                       v
-             +-------------------+
-             | Backend Container |
-             | Python HTTP Server|
-             |       :8000       |
-             +-------------------+
+              +-------+--------+
+                      |
+             +--------+--------+
+             |                 |
+             v                 v
+          /                  /api/
+     Frontend HTML             |
+                               v
+                    Docker Network
+                               |
+                               v
+                     +-------------------+
+                     | Backend Container |
+                     | Python HTTP Server|
+                     |       :8000       |
+                     +-------------------+

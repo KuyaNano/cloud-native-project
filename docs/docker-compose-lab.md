@@ -1047,3 +1047,23 @@ Next:
 * Redis
 * More production-style Compose architecture
 * Eventually transition these concepts to Kubernetes
+
+## Nginx Reverse Proxy
+
+Nginx is configured as a reverse proxy for the backend service.
+
+Configuration:
+
+- `/` serves the frontend from Nginx.
+- `/api/` is forwarded to the `backend` Compose service on port `8000`.
+- The backend does not publish port `8000` to the VM host.
+- Nginx reaches the backend through the internal Docker Compose network.
+
+Nginx configuration:
+
+```nginx
+location /api/ {
+    proxy_pass http://backend:8000/;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+}
