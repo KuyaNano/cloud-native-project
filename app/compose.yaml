@@ -21,3 +21,15 @@ services:
       timeout: 3s
       retries: 3
       start_period: 5s
+
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: appdb
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: devpassword
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+volumes:
+  postgres_data:
