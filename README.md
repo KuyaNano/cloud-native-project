@@ -41,6 +41,7 @@ My journey into cloud engineering, DevOps, and cloud infrastructure.
 - Docker service discovery
 - Port publishing and `ports` vs `expose`
 - Nginx reverse proxy
+- Environment-based configuration with Docker Compose and `.env`
 - `/api/` routing from Nginx to the backend
 - Backend health checks
 - Compose dependency and readiness with `service_healthy`
